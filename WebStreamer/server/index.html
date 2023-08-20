@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Download Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="robots" content="noindex">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.5.0/dist/full.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+  *{
+     font-family: 'Poppins',sans-serif;
+  }
+</style>
+</head>
+<body class="bg-gray-300 h-screen">
+    <div class="drawer">
+  <input id="my-drawer-3" type="checkbox" class="drawer-toggle" /> 
+  <div class="drawer-content flex flex-col">
+    <!-- Navbar -->
+    <div class="w-full navbar border">
+      <div class="flex-none lg:hidden">
+        <label for="my-drawer-3" class="btn btn-square btn-ghost">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </label>
+      </div> 
+      <div class="flex-1 px-2 mx-2">System32 Bot</div>
+      <div class="flex-none hidden lg:block">
+        <ul class="menu menu-horizontal">
+          <!-- Navbar menu content here -->
+          <li><a href="https://system32.ink">Home</a></li>
+      <li><a class="bg-blue-900 text-white font-bold" href="https://telegram.me/System32Download_bot">Upload File</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- Page content here -->
+    <div class="flex flex-col items-center justify-center mx-4">
+    <h1 class="text-3xl mt-6 font-bold">Free Unlimited Storage </h1>
+    <a href="https://t.me/System32Download_bot" class="bg-blue-600 mt-6 px-4 py-2 text-white rounded">Send File Now</a>
+    </div>
+ 
+ <!-- Delay countdown timer -->
+        <div class="countdown-container text-center mt-4 border border-black mx-6 rounded">
+            <p class="py-4 text-xl text-violet-700">You can download in <span class="countdown-timer text-orange-600 text-3xl" id="countdown">10</span> seconds...</p>
+        </div>
+
+        <!-- Download button -->
+        <div class="download-container text-center hidden my-8" id="downloadContainer">
+            <a href="#" class="download-button bg-green-500 text-white py-2 px-4 rounded">Download Now</a>
+        </div>
+    </div>
+    </div>
+ 
+ </div>
+ 
+  </div> 
+  <div class="drawer-side">
+    <label for="my-drawer-3" class="drawer-overlay"></label> 
+    <ul class="menu p-4 w-80 h-full bg-base-200">
+      <!-- Sidebar content here -->
+      <li><a href="https://system32.ink">Home</a></li>
+      <li><a class="bg-blue-900 text-white font-bold" href="https://t.me/System32Download_bot">Upload File</a></li>
+      
+    </ul>
+    
+  </div>
+</div>
+    
+  
+    
+    <script>
+        let currentUrl = window.location.href;
+        currentUrl = currentUrl.replace("file/", "");
+
+        console.log(currentUrl);
+
+        async function updateCountdown() {
+            var countdownElement = document.getElementById("countdown");
+            var seconds = parseInt(countdownElement.innerHTML);
+            if (seconds > 1) {
+                seconds--;
+                countdownElement.innerHTML = seconds;
+            } else {
+                countdownElement.style.display = "none";
+                delete seconds;
+                document.getElementById("downloadContainer").classList.remove("hidden");
+                document.querySelector("#downloadContainer a").setAttribute("href", currentUrl);
+            }
+        }
+
+        function startCountdown() {
+            setInterval(updateCountdown, 1000);
+        }
+
+        window.onload = startCountdown;
+    </script>
+</body>
+</html>
